@@ -32,7 +32,7 @@ public class CategoryController {
 	
 	@RequestMapping("/categories")
 	public @ResponseBody String showListOfCategories(Model model){
-//		List<CategoryDTO> categories = categoryService.getAllCategories();
+		List<CategoryDTO> categories = categoryService.getAllCategories();
 //		model.addAttribute("categoryList", categories);
 		//return CATEGORYLIST;
 		return "hello world";

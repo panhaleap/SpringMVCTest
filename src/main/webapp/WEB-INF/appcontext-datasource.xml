@@ -38,8 +38,8 @@
 	 </bean>
 	 
 	<!-- Create MapperScannerConfigurer Bean -->  
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">   
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">   
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />     
-		<property name="basePackage" value="com.mcnc.springmybatis.dao" />  
-	</bean> -->
+		<property name="basePackage" value="com.mcnc.springmybatis.dao" />
+	</bean>
 </beans>
