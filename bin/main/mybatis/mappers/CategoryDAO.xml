@@ -9,7 +9,7 @@
 		<result property="name" column="category_name" />
 		<result property="desc" column="category_desc" />
 	</resultMap>
-	<select id="getAllCategories" resultType="category" resultMap="Category">
+	<select id="getAllCategories" resultType="CategoryDTO" resultMap="Category">
 		SELECT * FROM mbbs_category
 	</select>
 	

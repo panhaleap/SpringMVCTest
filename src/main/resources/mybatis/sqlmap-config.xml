@@ -10,10 +10,5 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	  
 	<typeAliases>   
 		<typeAlias type="com.mcnc.springmybatis.service.dto.CategoryDTO" alias="CategoryDTO"/>  
-	</typeAliases>
-	
-	<mappers>
-      <mapper resource = "classpath:mybatis/mappers/CategoryDAO.xml"/>
-    </mappers>
-	 
+	</typeAliases>	 
 </configuration> 

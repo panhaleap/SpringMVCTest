@@ -19,23 +19,23 @@
 	 	<property name="password" value="${db.password}"/> 
 	 </bean>
 	 
- <!-- create a transaction manager -->      
-	 <!-- <bean id="transactionManager"      
+ 	 <!--create a transaction manager-->
+	 <bean id="transactionManager"      
 	 class="org.springframework.jdbc.datasource.DataSourceTransactionManager"      
 	 p:dataSource-ref="dataSource" />
 	     
-	 <tx:annotation-driven transaction-manager="transactionManager" /> -->
+	 <tx:annotation-driven transaction-manager="transactionManager" />
 	 
 	 <!-- create sessionfactory -->  
-	 <!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">     
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">     
 		 <property name="dataSource" ref="dataSource" />     
 		 <property name="configLocation" value="classpath:/mybatis/sqlmap-config.xml" />     
 		 <property name="mapperLocations">     
 		 	<util:list>       
-		 		<value>classpath:/mybatis/mappers/StudentDAO.xml</value>      
+		 		<value>classpath:/mybatis/mappers/CategoryDAO.xml</value>      
 		 	</util:list>   
 		 </property>  
-	 </bean> -->
+	 </bean>
 	 
 	<!-- Create MapperScannerConfigurer Bean -->  
 	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">   
