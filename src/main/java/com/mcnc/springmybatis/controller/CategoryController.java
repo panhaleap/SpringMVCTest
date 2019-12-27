@@ -4,11 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.mcnc.springmybatis.service.impl.CategoryService;
-import com.mcnc.springmybatis.service.dto.CategoryDTO;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +11,11 @@ import com.mcnc.springmybatis.service.dto.CategoryDTO;
 //import com.mcnc.dao.CategoryMapper;
 //import com.mcnc.entity.Category;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mcnc.springmybatis.service.dto.CategoryDTO;
+import com.mcnc.springmybatis.service.impl.CategoryService;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -26,16 +26,15 @@ public class CategoryController {
 	CategoryService categoryService;
 	
 	private static final String CATEGORY_FOULDER = "category/";
-	private static final String CATEGORYLIST = CATEGORY_FOULDER + "ListCategories";
+	private static final String CATEGORIES = CATEGORY_FOULDER + "Categories";
 //	private static final String ADD = CATEGORY_FOULDER + "Add";
 //	private static final String UPDATE = CATEGORY_FOULDER + "Update";
 	
 	@RequestMapping("/categories")
-	public @ResponseBody String showListOfCategories(Model model){
+	public String showListOfCategories(Model model){
 		List<CategoryDTO> categories = categoryService.getAllCategories();
-//		model.addAttribute("categoryList", categories);
-		//return CATEGORYLIST;
-		return "hello world";
+		model.addAttribute("categoryList", categories);
+		return CATEGORIES;
 	}
 	
 //	@RequestMapping("/showFormForAddCategory")

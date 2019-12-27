@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+.container {
+    width: 76%;
+}
+
+hr{
+	border-width: 0.7px;
+	color: black;
+}
+
+section{
+	background-color: white !important;
+}
+/* 
+.welcome-text{
+	color: #283042
+} */

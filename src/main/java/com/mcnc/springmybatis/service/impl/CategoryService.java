@@ -3,14 +3,11 @@ package com.mcnc.springmybatis.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 import com.mcnc.springmybatis.dao.CategoryDAO;
 import com.mcnc.springmybatis.service.api.ICategoryService;
 import com.mcnc.springmybatis.service.dto.CategoryDTO;
 
-@Service
 public class CategoryService implements ICategoryService{
 
 	@Autowired
