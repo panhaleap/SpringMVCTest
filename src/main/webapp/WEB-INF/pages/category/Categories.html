@@ -5,15 +5,17 @@
 	<link th:href="@{/resources/css/main.css}" rel="stylesheet"/>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 	<!-- CSS for pagination -->
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
-		
+	<th:block th:replace="fragments/style/paginationStyle"></th:block>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">	
 	<title>List of Category</title>
 </head>
 <body>
 	<div class="container">
+		<nav class="navbar navbar-light" th:replace="fragments/navigationBar"></nav>
+		
 		<h2>List of Category</h2>
 		<button
-			onclick="window.location.href = 'showFormForAddCategory'; return false;"
+			onclick="window.location.href = 'showFormForAdd'; return false;"
 			class="btn btn-primary">Add Category</button>
 			<br/><br/>
 		<table class="table table-striped" id="categoryListTable">
@@ -40,7 +42,7 @@
 			</tbody>
 		</table>
 	</div>
-	
+	<!-- Script for pagination -->
 	<th:block th:replace="fragments/script/PaginationScript"></th:block>
 </body>
 </html>

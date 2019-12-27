@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 //import com.mcnc.dao.CategoryMapper;
 //import com.mcnc.entity.Category;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,9 +26,11 @@ public class CategoryController {
 	@Autowired
 	CategoryService categoryService;
 	
+	@Autowired
+	
 	private static final String CATEGORY_FOULDER = "category/";
 	private static final String CATEGORIES = CATEGORY_FOULDER + "Categories";
-//	private static final String ADD = CATEGORY_FOULDER + "Add";
+	private static final String ADD = CATEGORY_FOULDER + "Add";
 //	private static final String UPDATE = CATEGORY_FOULDER + "Update";
 	
 	@RequestMapping("/categories")
@@ -37,19 +40,19 @@ public class CategoryController {
 		return CATEGORIES;
 	}
 	
-//	@RequestMapping("/showFormForAddCategory")
-//	public String addCategory(Model model){
-//		model.addAttribute("category", new Category());
-//		return ADD;
-//	}
-//	
-//	@RequestMapping("/saveProcess")
-//	public String saveCategory(@ModelAttribute("category") Category category){
-//		categoryMapper.saveCategory(category);
-//		System.out.println("Saved category");
-//
-//		return "redirect:/category/listOfCategories";
-//	}
+	@RequestMapping("/showFormForAdd")
+	public String addCategory(Model model){
+		model.addAttribute("category", new CategoryDTO());
+		return ADD;
+	}
+	
+	@RequestMapping("/saveProcess")
+	public String saveCategory(@ModelAttribute("category") CategoryDTO category){
+		categoryService.saveCategory(category);
+		System.out.println("Saved category");
+
+		return "redirect:/category/categories";
+	}
 //	
 //	@RequestMapping("/updateCategory")
 //	public String updateCategory(@RequestParam("categoryCode") String categoryCode, Model model){

@@ -17,19 +17,17 @@ public class CategoryService implements ICategoryService{
 		// TODO Auto-generated method stub
 		return categoryDAO.getAllCategories();
 	}
+	
+	@Override
+	public void saveCategory(CategoryDTO category) {
+		categoryDAO.saveCategory(category);
+	}
 
 //	@Autowired
 //	private ICategoryDAO categoryDAO;
 //
 //	public List<CategoryDTO> getAllCategories() {
 //		return categoryDAO.getAllCategories();
-//	}
-
-//	public void saveCategory(Category category){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		session.insert("insertCategory", category);
-//		session.commit();
-//		session.close();
 //	}
 //	
 //	public void updateByCode(Category category, String oldCategoryCode){

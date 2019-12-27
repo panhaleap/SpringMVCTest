@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorator="layouts/adminLayout">
 <head>
 	<meta charset="ISO-8859-1" content="text/html; charset=UTF-8">
 	<link th:href="@{/resources/css/main.css}" rel="stylesheet" />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-	<title>Insert title here</title>
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Mobile C&C</title>
 </head>
 <body>
 	<div class="container">
@@ -21,7 +23,7 @@
 			</div>
 			<div class="pull-right">
 				<input type="submit" value="Submit" class="btn btn-primary"/>
-				<input onclick="window.location.href = 'listOfCategories'" class="btn btn-secondary" value="Cancel"/>
+				<input onclick="window.location.href = 'categories'" class="btn btn-secondary" value="Cancel"/>
 			</div>
 		</form>
 	</div>
