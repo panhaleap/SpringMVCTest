@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mcnc.springmybatis.dao.CategoryDAO">
+	
+	<resultMap type="categoryDTO" id="Category">
+		<id property="code" column="category_code" />
+		<result property="name" column="category_name" />
+		<result property="desc" column="category_desc" />
+	</resultMap>
+	<select id="getAllCategories" resultType="category" resultMap="Category">
+		SELECT * FROM mbbs_category
+	</select>
+	
+	<!-- KeyProperty is to specify the primary key of Table Category, in here it is id (from class category) -->
+	<!-- useGeneratedKeys = true, means we want primary key to set auto -->
+	<!-- parameterType category is alias name, we specified before -->
+	<!-- <insert id="insertCategory" parameterType="category" keyProperty="code" useGeneratedKeys="false">
+	#{is the propery Of Class Category}
+		INSERT INTO public.mbbs_category
+		(category_code, category_name, category_desc)
+		VALUES(#{code}, #{name}, #{desc});
+	</insert>
+	
+	<select id="findByCode" resultType="category" resultMap="result_category" parameterType="String">
+		select * from mbbs_category where category_code = #{categoryCode}
+	</select>
+	
+	<update id="updateByCode" parameterType="map">
+		UPDATE mbbs_category
+		SET category_code=#{category.code}, category_name=#{category.name}, category_desc=#{category.desc}
+		WHERE category_code = #{oldCategoryCode};
+	</update>
+	
+	<delete id="deleteCategory" parameterType="String">
+		DELETE FROM mbbs_category where category_code = #{categoryCode}
+	</delete>
+	
+	Test CKEdiotr
+	<resultMap type="category" id="resultOfTestCKEditor">
+		<id property="code" column="category_code" />
+		<result property="name" column="category_name" />
+		<result property="desc" column="category_desc" />
+		<result property="ckEditorCommentTest" column="ck_editor_comment_test" />
+	</resultMap>
+	<insert id="insertCategoryTestCKEditor" parameterType="category" keyProperty="code" useGeneratedKeys="false">
+	#{is the propery Of Class Category}
+		INSERT INTO public.mbbs_category
+		(category_code, category_name, category_desc, ck_editor_comment_test)
+		VALUES(#{code}, #{name}, #{desc}, #{ckEditorCommentTest});
+	</insert>
+	
+	<select id="findByCodeCKEditor" resultType="category" resultMap="resultOfTestCKEditor" parameterType="String">
+		select * from mbbs_category where category_code = #{categoryCode}
+	</select>	
+	
+	<update id="updateByCodeCKEditor" parameterType="map">
+		UPDATE mbbs_category
+		SET 
+		category_code=#{category.code}, category_name=#{category.name}, 
+		category_desc=#{category.desc}, ck_editor_comment_test=#{category.ckEditorCommentTest}		
+		WHERE category_code = #{oldCategoryCode};		
+	</update> -->
+</mapper>
