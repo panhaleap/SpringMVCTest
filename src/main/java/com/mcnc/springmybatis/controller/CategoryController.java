@@ -61,17 +61,17 @@ public class CategoryController {
 		model.addAttribute("category", category);
 		return UPDATE;
 	}
-//	
-//	@RequestMapping("/saveUpdate")
-//	public String saveUpdateCategory(@RequestParam("oldCategoryCode") String oldCategoryCode, @ModelAttribute("category") Category category){
-//		categoryMapper.updateByCode(category, oldCategoryCode);
-//		System.out.println("Updated category");
-//		return "redirect:/category/listOfCategories";
-//	}	
-//
-//	@RequestMapping("/deleteCategory")
-//	public String deleteCategory(@RequestParam("categoryCode") String categoryCode){
-//		categoryMapper.deleteCategory(categoryCode);
-//		return "redirect:/category/listOfCategories";
-//	}
+	
+	@RequestMapping("/saveUpdate")
+	public String saveUpdateCategory(@RequestParam("oldCategoryCode") String oldCategoryCode, @ModelAttribute("category") CategoryDTO category){
+		categoryService.updateByCode(category, oldCategoryCode);
+		System.out.println("Updated category");
+		return "redirect:/category/categories";
+	}	
+
+	@RequestMapping("/deleteCategory")
+	public String deleteCategory(@RequestParam("categoryCode") String categoryCode){
+		categoryService.deleteCategory(categoryCode);
+		return "redirect:/category/categories";
+	}
 }

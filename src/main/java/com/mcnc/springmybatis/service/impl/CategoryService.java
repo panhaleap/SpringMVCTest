@@ -1,5 +1,6 @@
 package com.mcnc.springmybatis.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,17 @@ public class CategoryService implements ICategoryService{
 	@Autowired
 	CategoryDAO categoryDAO;
 	@Override
+	public void deleteCategory(String categoryCode){
+		categoryDAO.deleteCategory(categoryCode);
+	}
+	
+	@Override
+	public CategoryDTO findByCode(String categoryCode){
+		CategoryDTO category = categoryDAO.findByCode(categoryCode);
+		return category;
+	}
+
+	@Override
 	public List<CategoryDTO> getAllCategories() {
 		// TODO Auto-generated method stub
 		return categoryDAO.getAllCategories();
@@ -22,61 +34,13 @@ public class CategoryService implements ICategoryService{
 	public void saveCategory(CategoryDTO category) {
 		categoryDAO.saveCategory(category);
 	}
-
-//	@Autowired
-//	private ICategoryDAO categoryDAO;
-//
-//	public List<CategoryDTO> getAllCategories() {
-//		return categoryDAO.getAllCategories();
-//	}
-//	
-//	public void updateByCode(Category category, String oldCategoryCode){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		HashMap<String, Object> map=new HashMap<String, Object>();
-//		map.put("category", category);
-//		map.put("oldCategoryCode", oldCategoryCode);		
-//		session.update("updateByCode", map);
-//		session.commit();
-//		session.close();
-//	}
-//	
-//	public void deleteCategory(String categoryCode){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		session.delete("deleteCategory", categoryCode);
-//		session.commit();
-//		session.close();
-//	}
-//	
+	
 
 	@Override
-	public CategoryDTO findByCode(String categoryCode){
-		CategoryDTO category = categoryDAO.findByCode(categoryCode);
-		return category;
+	public void updateByCode(CategoryDTO category, String oldCategoryCode){
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("category", category);
+		map.put("oldCategoryCode", oldCategoryCode);		
+		categoryDAO.updateByCode(map);
 	}
-//	
-//	//Test CKEditor Comment
-//	public void saveCategoryTestCKEditor(Category category){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		session.insert("insertCategoryTestCKEditor", category);
-//		session.commit();
-//		session.close();
-//	}
-//	
-//	public Category findByCodeCKEditor(String categoryCode){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		Category category = (Category) session.selectOne("findByCodeCKEditor", categoryCode);
-//		session.commit();
-//		session.close();
-//		return category;
-//	}
-//	
-//	public void updateByCodeCKEditor(Category category, String oldCategoryCode){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		HashMap<String, Object> map=new HashMap<String, Object>();
-//		map.put("category", category);
-//		map.put("oldCategoryCode", oldCategoryCode);		
-//		session.update("updateByCodeCKEditor", map);
-//		session.commit();
-//		session.close();
-//	}
 }
