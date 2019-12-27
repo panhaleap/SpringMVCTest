@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mcnc.springmybatis.service.dto.CategoryDTO;
@@ -31,7 +32,7 @@ public class CategoryController {
 	private static final String CATEGORY_FOULDER = "category/";
 	private static final String CATEGORIES = CATEGORY_FOULDER + "Categories";
 	private static final String ADD = CATEGORY_FOULDER + "Add";
-//	private static final String UPDATE = CATEGORY_FOULDER + "Update";
+	private static final String UPDATE = CATEGORY_FOULDER + "Update";
 	
 	@RequestMapping("/categories")
 	public String showListOfCategories(Model model){
@@ -53,13 +54,13 @@ public class CategoryController {
 
 		return "redirect:/category/categories";
 	}
-//	
-//	@RequestMapping("/updateCategory")
-//	public String updateCategory(@RequestParam("categoryCode") String categoryCode, Model model){
-//		Category category = categoryMapper.findByCode(categoryCode);
-//		model.addAttribute("category", category);
-//		return UPDATE;
-//	}
+	
+	@RequestMapping("/pageUpdate")
+	public String updateCategory(@RequestParam("categoryCode") String categoryCode, Model model){
+		CategoryDTO category = categoryService.findByCode(categoryCode);
+		model.addAttribute("category", category);
+		return UPDATE;
+	}
 //	
 //	@RequestMapping("/saveUpdate")
 //	public String saveUpdateCategory(@RequestParam("oldCategoryCode") String oldCategoryCode, @ModelAttribute("category") Category category){

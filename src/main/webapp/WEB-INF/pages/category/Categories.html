@@ -34,7 +34,7 @@
 						<td th:text="${category.name}"></td>
 						<td th:text="${category.desc}"></td>
 						<td>
-							<a class="btn btn-primary" th:href="@{'/category/updateCategory?categoryCode=' + ${category.code}}">Update</a>
+							<a class="btn btn-primary" th:href="@{'/category/pageUpdate?categoryCode=' + ${category.code}}">Update</a>
 							<a class="btn btn-danger" th:href="@{'/category/deleteCategory?categoryCode=' + ${category.code}}">Delete</a>							
 						</td>
 					</tr>

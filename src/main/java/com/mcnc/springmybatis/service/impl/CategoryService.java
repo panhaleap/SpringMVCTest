@@ -48,14 +48,11 @@ public class CategoryService implements ICategoryService{
 //	}
 //	
 
-//	
-//	public Category findByCode(String categoryCode){
-//		SqlSession session = MyBatisUtil.getSqlSessionFactory().openSession();
-//		Category category = (Category) session.selectOne("findByCode", categoryCode);
-//		session.commit();
-//		session.close();
-//		return category;
-//	}
+	@Override
+	public CategoryDTO findByCode(String categoryCode){
+		CategoryDTO category = categoryDAO.findByCode(categoryCode);
+		return category;
+	}
 //	
 //	//Test CKEditor Comment
 //	public void saveCategoryTestCKEditor(Category category){

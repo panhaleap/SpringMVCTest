@@ -23,11 +23,11 @@
 		VALUES(#{code}, #{name}, #{desc});
 	</insert>
 	
-	<!-- <select id="findByCode" resultType="category" resultMap="result_category" parameterType="String">
+	<select id="findByCode" resultType="CategoryDTO" resultMap="Category" parameterType="String">
 		select * from mbbs_category where category_code = #{categoryCode}
 	</select>
 	
-	<update id="updateByCode" parameterType="map">
+	<!-- <update id="updateByCode" parameterType="map">
 		UPDATE mbbs_category
 		SET category_code=#{category.code}, category_name=#{category.name}, category_desc=#{category.desc}
 		WHERE category_code = #{oldCategoryCode};

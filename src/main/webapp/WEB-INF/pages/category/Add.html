@@ -10,21 +10,9 @@
 </head>
 <body>
 	<div class="container">
+		<nav class="navbar navbar-light" th:replace="fragments/navigationBar"></nav>
 		<h2>Add Category</h2>
-		<form th:action="@{/category/saveProcess}" th:object="${category}">
-			<div class="form-group">
-				<label>Code:</label> <input type="text" class="form-control" th:field="*{code}" placeholder="Enter Code" />
-			</div>
-			<div class="form-group">
-				<label>Name:</label> <input type="text" class="form-control" th:field="*{name}" placeholder="Enter Name"/>
-			</div>
-			<div class="form-group">
-				<label>Description:</label><input type="text" th:field="*{desc}" class="form-control" placeholder="Enter Description"/>
-			</div>
-			<div class="pull-right">
-				<input type="submit" value="Submit" class="btn btn-primary"/>
-				<input onclick="window.location.href = 'categories'" class="btn btn-secondary" value="Cancel"/>
-			</div>
+		<form th:action="@{/category/saveProcess}" th:object="${category}" th:include="fragments/Add-Update-Category">
 		</form>
 	</div>
 </body>
