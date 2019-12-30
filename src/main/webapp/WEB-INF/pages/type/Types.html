@@ -11,36 +11,40 @@
 <body>
 	<div class="container">
 		<nav class="navbar navbar-light" th:replace="fragments/navigationBar"></nav>
-		
-		<h2>List of Category</h2>
+		<h2>List of Type</h2>
 		<button
-			onclick="window.location.href = 'showFormForAdd'; return false;"
-			class="btn btn-primary">Add Category</button>
+			onclick="window.location.href = 'showFormForAddType'; return false;"
+			class="btn btn-primary">Add Type</button>
 			<br/><br/>
-		<table class="table table-striped" id="categoryListTable">
+		<table class="table table-striped" id="typeListTable">
 			<thead>
 				<tr>
 					<th>Code</th>
 					<th>Name</th>
 					<th>Description</th>
+					<th>Category</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<th:block th:each="category : ${categoryList}">
+				<th:block th:each="type : ${typeList}">
 					<tr>
-						<td th:text="${category.code}"></td>
-						<td th:text="${category.name}"></td>
-						<td th:text="${category.desc}"></td>
+						<td th:text="${type.code}"></td>
+						<td th:text="${type.name}"></td>
+						<td th:text="${type.desc}"></td>
+						<td th:text="${type.category.name}"></td>
 						<td>
-							<a class="btn btn-primary" th:href="@{'/category/pageUpdate?categoryCode=' + ${category.code}}">Update</a>
-							<a class="btn btn-danger" th:href="@{'/category/deleteCategory?categoryCode=' + ${category.code}}">Delete</a>							
+							<a class="btn btn-primary" th:href="@{'/type/updateType?typeCode=' + ${type.code}}">Update</a>
+							<a class="btn btn-danger" th:href="@{'/type/deleteType?typeCode=' + ${type.code}}">Delete</a>							
 						</td>
 					</tr>
 				</th:block>
 			</tbody>
 		</table>
 	</div>
+	
+	<!-- for Pagination and Search-->
+	<!-- datatables.min.js depends on jquery.min.js, that why we put it below jquery.min.js. -->
 	<!-- Script for pagination -->
 	<th:block th:replace="fragments/script/PaginationScript"></th:block>
 </body>

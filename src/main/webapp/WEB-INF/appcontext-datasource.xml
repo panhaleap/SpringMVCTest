@@ -32,7 +32,8 @@
 		 <property name="configLocation" value="classpath:/mybatis/sqlmap-config.xml" />     
 		 <property name="mapperLocations">     
 		 	<util:list>       
-		 		<value>classpath:/mybatis/mappers/CategoryDAO.xml</value>      
+		 		<value>classpath:/mybatis/mappers/CategoryDAO.xml</value>
+		 		<value>classpath:/mybatis/mappers/TypeDAO.xml</value>         
 		 	</util:list>   
 		 </property>  
 	 </bean>

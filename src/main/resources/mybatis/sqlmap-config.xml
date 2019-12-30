@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</settings>
 	  
 	<typeAliases>   
-		<typeAlias type="com.mcnc.springmybatis.service.dto.CategoryDTO" alias="CategoryDTO"/>  
+		<typeAlias type="com.mcnc.springmybatis.service.dto.CategoryDTO" alias="CategoryDTO"/>
+		<typeAlias type="com.mcnc.springmybatis.service.dto.TypeDTO" alias="TypeDTO"/>
 	</typeAliases>	 
 </configuration> 

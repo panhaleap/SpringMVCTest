@@ -21,7 +21,6 @@ import com.mcnc.springmybatis.service.impl.CategoryService;
 @Controller 
 @RequestMapping("/category")
 public class CategoryController {
-	@Autowired
 	
 	private static final String CATEGORY_FOULDER = "category/";
 	
