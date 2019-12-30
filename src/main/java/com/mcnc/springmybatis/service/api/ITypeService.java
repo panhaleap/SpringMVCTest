@@ -2,7 +2,6 @@ package com.mcnc.springmybatis.service.api;
 
 import java.util.List;
 
-import com.mcnc.springmybatis.service.dto.CategoryDTO;
 import com.mcnc.springmybatis.service.dto.TypeDTO;
 
 public interface ITypeService {
