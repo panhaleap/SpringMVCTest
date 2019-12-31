@@ -11,5 +11,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>   
 		<typeAlias type="com.mcnc.springmybatis.service.dto.CategoryDTO" alias="CategoryDTO"/>
 		<typeAlias type="com.mcnc.springmybatis.service.dto.TypeDTO" alias="TypeDTO"/>
+		<typeAlias type="com.mcnc.springmybatis.service.dto.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.mcnc.springmybatis.service.dto.BoardCommentDTO" alias="BoardCommentDTO"/>
+		<typeAlias type="com.mcnc.springmybatis.service.dto.AttachDTO" alias="AttachDTO"/>
 	</typeAliases>	 
 </configuration> 

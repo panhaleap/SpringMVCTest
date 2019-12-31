@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatiable" content="ie=edge">
+	<title>FAQ Board</title>
+	<!-- Ion icons -->
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="../../../resources/css/style-faq-board.css"> -->
+	<link th:href="@{/resources/css/style-faq-board.css}" rel="stylesheet">
+</head>
+<body>
+	<section>
+		<div class="container">
+			<h1 class ="welcome-text" style="color: white">Frequently Asked Questions</h1>
+			<div class="accordion" th:each="board : ${boardList}">
+				<div class="accordion-item" th:id="'board' + ${board.id}">
+					<a class="accordion-link" th:href="'#board' + ${board.id}" th:utext="${board.title} + ' (' + ${board.viewCount} +' views)'">
+						<!-- Question goes here! -->
+						<i class="icon ion-md-add"></i>
+						<i class="icon ion-md-remove"></i>
+					</a>
+					<div class="answer">
+						<p th:utext="${board.html}" >
+						<!-- Answer goes here! -->						
+						</p>
+						<a th:href="@{'/faq/faqBoardDetail?boardId=' + ${board.id}}">(Detail)</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

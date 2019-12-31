@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mcnc.springmybatis.dao.BoardDAO">
+	
+	<resultMap type="BoardDTO" id="result_board">
+		<id property="id" column="board_id"/>
+		<result property="typeCode" column="type_code"/>
+		<result property="title" column="board_title"/>
+		<result property="html" column="board_html"/>
+		<result property="viewCount" column="board_view_count"/>
+		<result property="isDisplayed" column="is_displayed"/>
+		<result property="createdBy" column="created_by"/>
+		<result property="updatedBy" column="updated_by"/>
+		<result property="createdDate" column="created_date"/>
+		<result property="updatedDate" column="updated_date"/>
+		<association property="type" resultMap="result_board_type"/>
+	</resultMap>
+		
+	<resultMap type="TypeDTO" id="result_board_type">
+		<id property="code" column="type_code" />
+		<result property="name" column="type_name" />
+		<result property="categoryCode" column="category_code" />
+		<association property="category" javaType="CategoryDTO">
+			<id property="code" column="category_code" />
+			<result property="name" column="category_name" />
+		</association>
+	</resultMap>
+
+		
+	<select id="getAllBoards" resultType="BoardDTO" resultMap="result_board">
+		select mb.*, ty.type_name, c.category_code, c.category_name from 
+		mbbs_board mb
+		inner join
+		mbbs_type ty on mb.type_code = ty.type_code
+		inner join
+		mbbs_category c on ty.category_code = c.category_code
+		order by c.category_code;
+	</select>
+	
+	<!-- <select id="findByBoardId" resultType="board" resultMap="result_board" parameterType="int">
+		select mb.*, ty.type_name, c.category_code, c.category_name from 
+		mbbs_board mb
+		inner join
+		mbbs_type ty on mb.type_code = ty.type_code
+		inner join
+		mbbs_category c on ty.category_code = c.category_code
+		where mb.board_id = #{boardId}
+		order by c.category_code;
+	</select>
+	
+	<update id="updateByCodeCKEditor" parameterType="map">
+		UPDATE mbbs_category
+		SET 
+		category_code=#{category.code}, category_name=#{category.name}, 
+		category_desc=#{category.desc}, ck_editor_comment_test=#{category.ckEditorCommentTest}		
+		WHERE category_code = #{oldCategoryCode};		
+	</update>
+	
+	<update id="updateByBoardId" parameterType="board">
+		UPDATE public.mbbs_board
+		SET type_code= #{typeCode}, 
+			board_title= #{title},
+			board_html= #{html},
+			board_view_count= #{viewCount}, 
+			is_displayed= #{isDisplayed},
+			updated_by= #{updatedBy}, 
+			updated_date= CURRENT_TIMESTAMP
+		WHERE board_id = #{id};			
+	</update> -->
+</mapper>

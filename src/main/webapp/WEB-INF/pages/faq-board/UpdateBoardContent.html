@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatiable" content="ie=edge">
+	<title>FAQ Board</title>
+	<!-- Ion icons -->
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="../../../resources/css/style-faq-board.css">
+	<link rel="stylesheet" href="../../../resources/css/style-faq-board-detail.css">
+	<link th:href="../../../resources/css/style-faq-board-detail.css}" rel="stylesheet">
+	<script th:src="../../../resources/ckeditor/ckeditor.js}"></script> -->
+	
+	
+	<link th:href="@{/resources/css/style-faq-board.css}" rel="stylesheet">
+	<link th:href="@{/resources/css/style-faq-board-detail.css}" rel="stylesheet">
+	<script th:src="@{/resources/ckeditor/ckeditor.js}"></script>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<section>
+		<div class="container">
+			<h1 class="welcome-text" th:utext="${board.title}">
+				<!-- Question title goes here! -->
+			</h1>
+			<div class="accordion">
+				<div class="accordion-item">
+					<!-- <div class="accordion-link" th:utext="${board.html}">
+						Answer goes here!
+					</div> -->
+					<form th:action="@{/faq/saveUpdate}" enctype="multipart/form-data"
+						method="POST" th:object="${board}">
+						<div></div>
+						<input type="hidden" th:field="${board.id}" id ="id" name="id"/>
+						<textarea cols="10" id="html" name="html" rows="5"
+							placeholder="Write answer here..." th:field="*{html}"
+							class="accordion-link">
+							</textarea>
+						<div>
+							<label style="color: white; font-size: 1.33em; margin-top: 10px">Upload
+								File:</label> <input type="file" name="file"><br />
+						</div>
+						<div class="pull-right">
+							<input type="submit" value="Update" class="btn btn-primary" />
+							<input onclick="window.location.href = 'listOfFaq'" class="btn btn-secondary" value="Cancel" />
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</body>
+
+<script type="text/javascript">
+			CKEDITOR.replace('html');
+	</script>
+</html>

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.mcnc.springmybatis.dao.TypeDAO;
 import com.mcnc.springmybatis.service.api.ITypeService;
@@ -13,6 +14,8 @@ public class TypeService implements ITypeService{
 
 	@Autowired
 	TypeDAO typeDAO;
+	@Autowired
+	PlatformTransactionManager platformTransactionManager;
 	@Override
 	public void deleteType(String typeCode){
 		typeDAO.deleteType(typeCode);

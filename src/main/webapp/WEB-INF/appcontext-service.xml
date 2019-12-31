@@ -6,5 +6,6 @@
 		
 		<!-- create beans(services) here  -->
 		<bean id="categoryService" class="com.mcnc.springmybatis.service.impl.CategoryService"/>
-		<bean id="typeService" class="com.mcnc.springmybatis.service.impl.TypeService"/> 
+		<bean id="typeService" class="com.mcnc.springmybatis.service.impl.TypeService"/>
+		<bean id="boardService" class="com.mcnc.springmybatis.service.impl.BoardService"/>
 </beans>

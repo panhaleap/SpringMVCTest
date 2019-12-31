@@ -1,0 +1,105 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>FAQ with Mobile C&C</title>
+<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand';
+        }
+body { background: #fafafa; }
+        .faq {
+            width: 50%;
+            border: 1px solid #222;
+        }
+
+        .faqitem .header {
+            padding: 15px;
+            background: #C0392B;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faqitem .header h4 {
+            margin: 0;
+        }
+
+        .faqitem .header .fa.fa-minus {
+            display: none;
+        }
+
+        .faqitem.jquery-accordion-active .fa.fa-minus {
+            display: block;
+        }
+
+        .faqitem.jquery-accordion-active .fa.fa-plus {
+            display: none;
+        }
+
+        .faqitem .content {
+            padding: 15px;
+            display: none;
+        }
+        
+        a { 
+        	color: inherit;
+        	text-decoration:none;  
+        }
+	</style>
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>FAQ With Mobile C&C</h1>
+<div id="carbon-block" align="center" style="margin:30px auto"></div>
+<div align="center" style="margin:30px auto">
+<script type="text/javascript">
+</script>
+</div>
+    <div class="faq">
+        <div class="faqitem" th:each="board : ${boardList}">
+            <div class="header">
+                <h4 th:utext="${board.title} + ' (' + ${board.viewCount} +' views)'">
+                	Why do we use it?
+                </h4>
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-minus"></i>
+            </div>
+            <a th:href="@{'/faq/faqBoardDetail?boardId=' + ${board.id}}">
+	            <div class="content" th:utext="${board.html}">
+					It is a long established fact that a reader will be 
+					distracted by the readable content of a page when looking 
+					at its layout. The point of using Lorem Ipsum is that it 
+					has a more-or-less normal distribution of letters, as opposed
+					to using 'Content here, content here', making it look like readable English.
+				</div>
+			</a>
+        </div>
+    </div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+	integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+	crossorigin="anonymous"></script>
+	<script th:src="@{/resources/js/jquery-accordion.js}"></script>
+	<script>
+		$(".faq").accordion({
+            questionClass: '.header',
+            answerClass: '.content',
+            itemClass: '.faqitem'
+		});
+	</script>
+</body>
+</html>
