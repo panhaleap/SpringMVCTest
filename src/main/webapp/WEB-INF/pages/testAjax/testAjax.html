@@ -18,7 +18,12 @@
 	                    category.name = $('#txtName').val();
 	                    category.desc = $('#txtDesc').val();
 	                    var categoryJSON = JSON.stringify(category);
-	                    var url = /*[[${#httpServletRequest.requestURI}]]*/
+	                    
+	                    //show current url without port and protocol
+	                    //var url = '[[${#httpServletRequest.requestURI}]]';
+	                    
+	                    //This gonna show protocol, host, port and our url destination
+	                    var url = '[[${#httpServletRequest.scheme} +':'+ '//'+ ${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort} + @{/test/saveCategory}]]';
 	                    $.ajax({
 	                        url: url,//'http://localhost:8081/SpringMVCTest/test/saveCategory',
 	                        method: 'POST',
