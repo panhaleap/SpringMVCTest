@@ -6,9 +6,27 @@ package SpringMVCTest;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+import java.util.LinkedHashMap;
+
+public class LibraryTest extends LinkedHashMap<String, Object>  {
     @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+//        Library classUnderTest = new Library();
+//        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+    	
+    	System.out.println(getLong("JJJJJJJJJJJJJJJJJJJJJJ"));
     }
+    
+	public long getLong( String key ) {
+		if ( get( key ) != null ) {
+			return Long.valueOf( getString( key ) ).longValue();
+		}
+		return 0L;
+	}
+	
+	public String getString( String key ) {
+		if ( get( key ) != null ) {
+			return String.valueOf( get( key ) );
+		}
+		return null;
+	}
 }

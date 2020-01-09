@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorator="layouts/adminLayout">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type = "text/javascript">
+        	/*<![CDATA[*/
+	            $(document).ready(function () {
+	                var category = {};
+	                getAllCategories();
+	                $('#btnAddCategory').click(function () {
+	                    category.code = $('#txtCode').val();
+	                    category.name = $('#txtName').val();
+	                    category.desc = $('#txtDesc').val();
+	                    var categoryJSON = JSON.stringify(category);
+	                    var url = /*[[${#httpServletRequest.requestURI}]]*/
+	                    $.ajax({
+	                        url: url,//'http://localhost:8081/SpringMVCTest/test/saveCategory',
+	                        method: 'POST',
+	                        data: categoryJSON,
+	                        contentType: "application/json; charset=utf-8",
+	                        success: function () {
+	                            alert('Saved successfully!');
+	                            getAllCategories();
+	                        },
+	                        error: function (error) {
+	                            alert(error);
+	                        }
+	                    })
+	                    
+	                }) 
+	            });
+	            
+	            function getAllCategories() {
+	                $.ajax({
+	                    url: 'http://localhost:8081/SpringMVCTest/test/getAllCategoriesJSON',
+	                    method: 'GET',
+	                    dataType: 'json',
+	                    success: function (data) {
+	                        var tableBody = $('#tblCategory tbody');
+	                        tableBody.empty();
+	                        $(data).each(function (index, element) {
+	                            tableBody.append('<tr><td>'+element.code+'</td><td>'+element.name+'</td><td>'+element.desc+'</td>');
+	                        })
+	                    },
+	                    error: function (error) {
+	                        alert(error);
+	                    }
+	                });
+	            }
+	        /*]]>*/
+        </script>
+        <style type="text/css">
+        	.table1 td {
+        	 border-style: hidden
+        	}
+        </style>
+    </head>
+    <body>
+        <table border="1" style="border-collapse:collapse" class="table1">
+        	<tr>
+        		<td>Code</td>
+            	<td><input id="txtCode" type="text"/></td>
+        	</tr>
+            <tr>
+            	<td>Name</td>
+                <td><input id="txtName" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input id="txtDesc" type="text" /></td>
+            </tr>
+        </table>
+        <input type="button" id="btnAddCategory" value="Add Category" />
+        <table id="tblCategory" border="1" style="border-collapse:collapse">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </body>
+</html>

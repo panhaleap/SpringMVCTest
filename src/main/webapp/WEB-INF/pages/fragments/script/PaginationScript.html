@@ -1,17 +1,27 @@
-
-<!-- for Pagination and Search-->
-<!-- datatables.min.js depends on jquery.min.js, that why we put it below jquery.min.js. -->
-<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
-<script type="text/javascript">
-		$(document).ready(function() {
-			$("#categoryListTable").DataTable(); 
-		});
-</script>
-
-<script type="text/javascript">
-		$(document).ready(function() {
-			$("#typeListTable").DataTable(); 
-		});
-</script>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+				xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="frag (tableId)" th:with="tableID= ${tableId}">
+	<!-- for Pagination and Search-->
+		<!-- datatables.min.js depends on jquery.min.js, that why we put it below jquery.min.js. -->
+		
+		<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
+<!-- 		<script type="text/javascript">
+				$(document).ready(function() {
+					$("#categoryListTable").DataTable(); 
+				});
+		</script> -->
+		
+		<script type="text/javascript">
+				$(document).ready(function() {
+					$("${tableId}").DataTable(); 
+				});
+		</script>
+		<p th:text="${tableId}">...</p>
+		<p th:text="${tableID}">...</p>
+	</div>
+</body>
+</html>
