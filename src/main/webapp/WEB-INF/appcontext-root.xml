@@ -31,6 +31,7 @@
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".html" />
         <property name="templateMode" value="HTML5" />
+        <property name="cacheable" value="false"></property>
     </bean>
 	<!-- STEP 2 - Create SpringTemplateEngine -->
     <bean id="templateEngine"
