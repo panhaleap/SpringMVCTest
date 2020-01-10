@@ -46,7 +46,8 @@
 	<!-- for Pagination and Search-->
 	<!-- datatables.min.js depends on jquery.min.js, that why we put it below jquery.min.js. -->
 	<!-- Script for pagination -->
-	<th:block th:include="fragments/script/PaginationScript :: frag ('#typeListTable')"></th:block>
+	<!-- only tableId parameter specified -->
+	<th:block th:replace="fragments/script/PaginationScript :: paginationFragement(tableId='#typeListTable')"></th:block>
 	
 </body>
 </html>

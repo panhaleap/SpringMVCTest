@@ -41,7 +41,7 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- Script for pagination -->
-	<th:block th:replace="fragments/script/PaginationScript"></th:block>
+	<!-- only tableId parameter specified -->
+	<th:block th:replace="fragments/script/PaginationScript :: paginationFragement(tableId='#categoryListTable')"></th:block>
 </body>
 </html>
