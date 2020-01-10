@@ -8,12 +8,16 @@
 	<th:block th:replace="fragments/style/paginationStyle"></th:block>
 	<title>List of Category</title>
 </head>
-<body>
+<body th:replace="~{fragments/listItems :: listItems(
+													~{:: h2}, 
+													~{::#pagination},
+													~{::#buttonAdd}
+													)}">
 	<div class="container">
 		<nav class="navbar navbar-light" th:replace="fragments/navigationBar"></nav>
 		
 		<h2>List of Category</h2>
-		<button
+		<button id="buttonAdd"
 			onclick="window.location.href = 'showFormForAdd'; return false;"
 			class="btn btn-primary">Add Category</button>
 			<br/><br/>
@@ -41,7 +45,7 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- only tableId parameter specified -->
-	<th:block th:replace="fragments/script/PaginationScript :: paginationFragement(tableId='#categoryListTable')"></th:block>
+	<!-- Script for pagination -->
+	<th:block id= "pagination" th:replace="fragments/script/PaginationScript"></th:block>
 </body>
 </html>

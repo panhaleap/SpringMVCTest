@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
 	<meta charset="ISO-8859-1" content="text/html; charset=UTF-8">
 	<link th:href="@{/resources/css/main.css}" rel="stylesheet"/>
@@ -8,14 +8,12 @@
 	<th:block th:replace="fragments/style/paginationStyle"></th:block>
 	<title>List of Category</title>
 </head>
-<body>
+<body th:fragment = "listItems(title, otherStaticResources, buttonAdd)">
 	<div class="container">
 		<nav class="navbar navbar-light" th:replace="fragments/navigationBar"></nav>
 		
-		<h2>List of Category</h2>
-		<button
-			onclick="window.location.href = 'showFormForAdd'; return false;"
-			class="btn btn-primary">Add Category</button>
+		<h2 th:replace="${title}">This will be replaced</h2>
+		<button th:replace="${buttonAdd}">This will be replaced</button>
 			<br/><br/>
 		<table class="table table-striped" id="categoryListTable">
 			<thead>
@@ -41,7 +39,8 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- only tableId parameter specified -->
-	<th:block th:replace="fragments/script/PaginationScript :: paginationFragement(tableId='#categoryListTable')"></th:block>
+	<!-- Script for pagination -->
+	<!-- Other javascript, css source files -->
+	<th:block th:replace="${otherStaticResources} ?: ~{}"></th:block>
 </body>
 </html>
