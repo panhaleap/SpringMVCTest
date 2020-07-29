@@ -1,6 +1,6 @@
 # SpringMVCTest
 
-This project was generated with gradle version 5.6.1.
+This project was generated with gradle version 5.6.1, thymeleaf and mybatis.
 
 ## Development server
 Refresh gradle by right click on project -> Gradle -> Refresh gradle project
